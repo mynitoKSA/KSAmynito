@@ -2,34 +2,34 @@
 <html>
 	<head lang = "ko">
 		<title>
-		화합부 주관 마니또 프로젝트
+		마니또
 		</title>
 		<meta charset = "urf-8">
 		<link rel = "stylesheet" type = "text/css" href = "main_login_style.css"/>
 	</head>
 	<body>
-    <button type="button" style="color: admin; background:white; border: 0; outline: 0; border-radius:100px; padding:5px 20px;">admin</button>
+    <button type="button" style="color: admin; background:white; border: 0; outline: 0; border-radius:100px; padding:5px 20px;" onclick="adminBtnClicked()">admin</button>
 		<div id = "login_block">
       <p>
       <h1 style="color: white">화합부 주관 마니또 프로젝트</h1>
       </p>
-      <form action = "login.js">
+      <form action = "../php/main_login.php" method="post">
         <p>
-          <label for = "name" type = "text" style = "font-size: large">이름</label> : <input id = "name" style = "width:150px; height:25px;" >
+          <label for = "name" type = "text" style = "font-size: large">이름</label> : <input id = "name" style = "width:150px; height:25px;" name = "name">
         </p>
         <p>
-          <label for = "studentnumber" type = "text" style = "font-size: large">학번</label> : <input id = "studentnumber" style = "width:150px; height:25px;" title = "XX-XXX 로 입력해주세요">
+          <label for = "studentnumber" type = "text" style = "font-size: large">학번</label> : <input id = "studentnumber" style = "width:150px; height:25px;" title = "XX-XXX 로 입력해주세요" name = "stNum">
         </p>
         <p>
-          <label for = "password" type = "password" style = "font-size: large">비번</label> : <input id = "password" style = "width:150px; height:25px;">
+          <label for = "password" style = "font-size: large">비번</label> : <input id = "password" style = "width:150px; height:25px;" type="password" name = "pw">
         </p>
         <p>
-          <input id = "login" type = "button" value = "로그인"/>  비밀번호를 까먹었나요?
+          <input id = "login" type = "button" value = "로그인" onclick = "loginBtnClicked()"/>  비밀번호를 까먹었나요?
         </p>
       </form>
       <p>
           회원가입을 안하셨나요?
-        <input id = "register" type = "button" value = "회원가입"/>
+        <input id = "register" type = "button" value = "회원가입" onclick = "signupBtnClicked()"/>
       </p>
       <p>
         문의 : 20-028 김태현(010-9245-1228) 20-084 이정민(010-3159-2835)
