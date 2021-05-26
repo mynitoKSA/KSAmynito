@@ -4,11 +4,11 @@ const signupBtn = document.getElementById("admin")
 
 const loginForm = document.getElementById("login-form")
 
-loginBtn.addEventListener("click", (e) => {
-    e.preventDefault();
-    const name = loginForm.name.value;
-    const stNum = loginForm.stNum.value;
-    const pw = loginForm.password.value;
+// loginBtn.addEventListener("click", (e) => {
+//     e.preventDefault();
+//     const name = loginForm.name.value;
+//     const stNum = loginForm.stNum.value;
+//     const pw = loginForm.password.value;
 
-    alert(stNum + " " + name + " " + pw)
-})
+//     alert(stNum + " " + name + " " + pw)
+// })

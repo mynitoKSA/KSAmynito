@@ -3,17 +3,17 @@
   <head lang="ko">
     <title>회원가입</title>
     <meta charset = "urf-8">
-    <link rel = "stylesheet" type = "text/css" href = "registeration_style.css"/>
+    <link rel = "stylesheet" type = "text/css" href = "../css/registration_style.css"/>
 	</head>
   <body>
     <h1>회원가입</h1>
-    <div id = registeration>
-      <form action = "registeration.js">
+    <div id = registration>
+      <form action = "../js/registration.js" id = "registerForm" method = "POST">
       <p>
         <label for = "name" type = "text">이름</label> : <input id = "name">
       </p>
       <p>
-        <label for = "studentnumber" type = "text">학번</label> : <input id = "studentnumber">
+        <label for = "studentnumber" type = "text">학번</label> : <input id = "stNum">
         </p>
         <p>
           <label for = "password" type = "pw" >비밀번호</label> : <input id = "password">
@@ -21,7 +21,7 @@
         <p>
           <label for = "phonenumber" type = "pw" >전화번호</label> : <input id = "phonenumber">
         </p>
-      <input type = "button" value = "등록">
+      <input id = "submit" type = "submit" value = "등록">
       </form>
     </div>
   </body>
