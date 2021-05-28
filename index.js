@@ -1,21 +1,38 @@
-const express = require('express')
-const app = express()
-const bodyParser = require('body-parser')
+var mysql = require('mysql')
+var express = require('express')
+var bodyParser = require('body-parser')
+var app = express()
 
-const mysql = require('mysql');
+app.use(express.static(__dirname))
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({extended: false}))
 
-const con = mysql.createConnection({
+app.listen(3000, 'localhost', function () {
+    console.log('서버 실행 중...')
+})
+
+var con = mysql.createConnection({
     host: "mynito-db.cqxwiqzo0ydz.ap-northeast-2.rds.amazonaws.com",
     user: "mynitoadmin",
     database: "mynitodb",
     password: "mynito20",
-    port: "3306"
-});
+    port: 3306
+})
 
-app.use(express.static('public'))
-app.use(bodyParser.urlencoded({extended: false}))
+// var con = mysql.createConnection({
+//     host: "localhost",
+//     user: "root",
+//     database: "mynitodb",
+//     password: "aoddl2005",
+// })
 
-app.post('/users', function(req, res) {
+app.get('/', function(req, res){
+    res.redirect('/main_login')
+})
+app.get('/main_login', function(req, res){
+    res.sendFile(__dirname+'/html/main_login.html')
+})
+app.post('/user-register', function (req, res) {
     console.log(req.body)
     var userName= req.body.name
     var userStNum = req.body.stNum
@@ -23,18 +40,19 @@ app.post('/users', function(req, res) {
     var userPW = req.body.password
 
     var sql = 'INSERT INTO Users (UserName, UserStNum, UserPhone, UserPwd) VALUES (?, ?, ?)'
-    // var sql = `INSERT INTO Users (UserName, UserStNum, UserPhone, UserPwd) VALUES ('${req.query.name}', '${req.query.email}', '${req.query.phone}', '${req.query.pw}')`
     var params = [userName, userStNum, userPhone, userPW]
 
-    con.query(sql, params, function (err, result) {
+    con.query(sql, params, function (err, rows, fields) {
         var resultCode = 404
         var message = '에러가 발생했습니다'
         
         if (err) {
-            console.log(err)
+            console.log(err);
+            res.status(500).send('Internal Server Error');
         } else {
             resultCode = 200
             message = '성공'
+            res.redirect('/waiting')
         }
         
         res.json({
@@ -42,24 +60,5 @@ app.post('/users', function(req, res) {
             'message': message
         })
     })
+    res.sendFile(__dirname+'/html/registration.html')
 })
-
-// app.post('/users', (req, res) => {
-//     if (req.query.name && req.query.stNum && req.query.phone && req.query.pw) {
-//         console.log('Request received')
-//         con.connect(function (err) {
-//             con.query(`INSERT INTO main.users (UserName, UserStNum, UserPhone, UserPwd) VALUES ('${req.query.name}', '${req.query.email}', '${req.query.phone}', '${req.query.pw}')`, function(err, result, fields) {
-//                 if (err) res.send(err)
-//                 if (result) res.send({
-//                     UserName: req.query.name,
-//                     UserStNum: req.query.stNum,
-//                     UserPhone: req.query.phone,
-//                     UserPwd: req.query.pw
-//                 })
-//                 if (fields) console.log(fields)
-//             })
-//         })
-//     } else {
-//         console.log('Missing a parameter')
-//     }
-// })

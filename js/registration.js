@@ -38,6 +38,7 @@ app.post('/user/register', function (req, res) {
         } else {
             resultCode = 200
             message = '성공'
+            res.redirect('/waiting')
         }
         
         res.json({
@@ -45,5 +46,5 @@ app.post('/user/register', function (req, res) {
             'message': message
         })
     })
-    res.send("Users/jm/Documents/Mynito/ksamynito/js","registration.html")
+    res.send("","registration.html")
 })
