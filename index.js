@@ -28,6 +28,7 @@ app.get('/', function(req, res){
 app.get('/main_login', function(req, res){
     res.sendFile(__dirname+'/html/main_login.html')
     if(req.session.loggedin) res.redirect('/waiting')
+    if(req.session.adminlogin) res.redirect('/admin')
 })
 
 app.post('/check-login', function(req, res){
@@ -106,7 +107,24 @@ app.get('/check-admin', function(req,res){
 })
 
 app.post('/check-adminlock', function(req,res){
-    
+    if(req.body.adminkey){
+        if (req.body.adminkey == "adminpassword"){
+            req.session.adminlogin = true
+            res.redirect('/admin')
+        } else {
+            console.log("Attempt of entering admin")
+            res.redirect('/')
+        }
+    }
+})
+
+app.get('/admin', function(req,res){
+    if (req.session.adminlogin){
+        res.sendFile(__dirname+'/html/admin-chatview.html')
+    } else {
+        console.log("Attempt of entering admin without verification")
+        res.redirect('/')
+    }
 })
 
 app.listen(3000, () => console.log('서버 실행 중...'))
