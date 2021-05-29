@@ -3,25 +3,25 @@
   <head lang="ko">
     <title>회원가입</title>
     <meta charset = "urf-8">
-    <link rel = "stylesheet" type = "text/css" href = "../css/registration_style.css"/>
+    <link rel = "stylesheet" type = "text/css" href = "/css/registration_style.css"/>
 	</head>
   <body>
     <h1>회원가입</h1>
     <div id = registration>
-      <form id = "registerForm" method = "POST">
-      <p>
-        <label for = "name" type = "text">이름</label> : <input id = "name">
-      </p>
-      <p>
-        <label for = "studentnumber" type = "text">학번</label> : <input id = "stNum">
+      <form action = "/check-register" id = "registerForm" method = "POST">
+        <p>
+          <label for = "name" type = "text">이름</label> : <input id = "name" name="name">
         </p>
         <p>
-          <label for = "password" type = "pw" >비밀번호</label> : <input id = "password" type="password">
+          <label for = "studentnumber" type = "text">학번</label> : <input id = "stNum" name="stNum">
+        </p>
+        <p> 
+          <label for = "password" type = "pw" >비밀번호</label> : <input id = "pw" type="password" name="password">
         </p>
         <p>
-          <label for = "phonenumber" type = "pw" >전화번호</label> : <input id = "phonenumber">
+          <label for = "phonenumber" type = "pw" >전화번호</label> : <input id = "phone" name="phone" placeholder="01012345678">
         </p>
-      <input id = "submit" type = "submit" value = "등록">
+        <input id = "submit" type = "submit" value = "등록">
       </form>
     </div>
   </body>

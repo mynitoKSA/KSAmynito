@@ -5,31 +5,32 @@
 		마니또 로그인
 		</title>
 		<meta charset = "urf-8">
-		<link rel = "stylesheet" type = "text/css" href = "../css/main_login_style.css"/>
+		<link rel = "stylesheet" type = "text/css" href = "/css/main_login_style.css"/>
 	</head>
 	<body>
-    <button type="button" style="color: admin; background:white; border: 0; outline: 0; border-radius:100px; padding:5px 20px;" id = "admin" onclick = "location.href = '../html/adminlock.html'">admin</button>
+    <button type="button" style="color: admin; background:white; border: 0; outline: 0; border-radius:100px; padding:5px 20px;" id = "admin" onclick = "location.href = '/check-admin'">admin</button>
 		<div id = "login_block">
       <p>
-      <h1 style="color: white">화합부 주관 마니또 프로젝트</h1>
+      <h1 style="color: white">화합부 주관 </h1><h1 style="color: white">마니또 프로젝트</h1>
       </p>
       <form action = "/check-login" id="login-form" method="POST">
       <p>
         <label for = "name" type = "text" style = "font-size: large">이름 : </label><input id = "name" style = "width:150px; height:25px;" name = "name" placeholder="Name">
       </p>
       <p>
-        <label for = "studentnumber" type = "text" style = "font-size: large">학번 : </label><input id = "stNum" style = "width:150px; height:25px;" placeholder = "XX-XXX" name = "stNum" pattern = "\d{2}\-\d{3}" title = "20-001 형식으로 입력하세요"/>
+        <label for = "studentnumber" type = "text" style = "font-size: large">학번 : </label><input id = "stNum" style = "width:150px; height:25px;" placeholder = "XX-XXX" name = "stNum" title = "20-001 형식으로 입력하세요"/>
       </p>
       <p>
         <label for = "password" style = "font-size: large">비번 : </label><input id = "password" style = "width:150px; height:25px;" type="password" name = "pw" placeholder="P/W">
       </p>
+        <h3>계정 정보가 일치하지 않습니다!</h3>
       <p>
         <button id = "login" type = "submit">로그인</button>  비밀번호를 까먹었나요?
       </p>
       </form>
       <p>
           회원가입을 안하셨나요?
-        <button id = "register" type = "button" onclick = "location.href = '../html/registration.html'">회원가입</button>
+        <button id = "register" type = "button" onclick = "location.href = '/user-register'">회원가입</button>
       </p>
       <p>
         문의 : 20-028 김태현(010-9245-1228) 20-084 이정민(010-3159-2835)
